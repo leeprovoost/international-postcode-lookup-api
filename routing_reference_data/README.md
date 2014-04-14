@@ -23,3 +23,8 @@ mongoimport --db test --collection routing_api_country --type csv --fields a,b,c
 // Country Postcode File
 mongoimport --db test --collection routing_api_countrypc --type csv --fields a,b,c --file ./countrypc.csv 
 ```
+
+## TODO
+
+- Create conversion scripts to convert original DHL txt files to csv files for MongoDB import
+- Create MongoDB initialisation script (create database, create tables, load data)
