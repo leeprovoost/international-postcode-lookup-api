@@ -1,6 +1,6 @@
-# dhl-routing-reference-data-api
+# DHL Routing Reference Data API (ESDv6)
 
-This is a Java Dropwizard API wrapper around DHL's Routing Reference Data
+This is a Java Dropwizard API wrapper around DHL's publicly available [Routing Reference Data](http://www.dhl.co.uk/en/express/resource_centre/integrated_shipping_solutions/developer_download_centre1.html#reference_data).
 
 ## Set up your MongoDB database
 
