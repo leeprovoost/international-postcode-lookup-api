@@ -1,10 +1,10 @@
 # Import DHL Routing Reference Data into MongoDB
 
-I have converted the [Routing Reference Data](http://www.dhl.co.uk/en/express/resource_centre/integrated_shipping_solutions/developer_download_centre1.html) from DHL into CSV files, stripped some of the unused columns and removed the header lines. 
+I have converted the publicly accessible DHL [Routing Reference Data](http://www.dhl.co.uk/en/express/resource_centre/integrated_shipping_solutions/developer_download_centre1.html) from DHL into CSV files, stripped some of the unused columns and removed the header lines. 
 
-I have uploaded zipped version of the ESD v6 CSV files to my github repository, but make sure that you check the original files and the documentation that is provided on the [Developer Download Centre](http://www.dhl.co.uk/en/express/resource_centre/integrated_shipping_solutions/developer_download_centre1.html).
+I have uploaded zipped version of the ESD v6 CSV files to my github repository, but make sure that you check the original files and the documentation that is provided on the [Developer Download Centre](http://www.dhl.co.uk/en/express/resource_centre/integrated_shipping_solutions/developer_download_centre1.html). The DHL documentation describes all the different fieldnames. I have replaced the field names in my imports with single letter field names to save space, however feel free to replace the field names in the import statements with your own.
 
-Please do check with your contact person at DHL first to see whether you can use this in your own application. The data (including the one in the converted CSV files) belong to DHL. 
+Please do check with your contact person at DHL first to see whether you are allowed to use this data in your own application. The data (including the one in the converted CSV files) belong to DHL, not me. I'm just sharing my work whilst doing some import work on my own project. 
 
 ## How to install
 
@@ -26,5 +26,7 @@ mongoimport --db test --collection routing_api_countrypc --type csv --fields a,b
 
 ## TODO
 
+- Document match list of single letter labels to DHL labels
 - Create conversion scripts to convert original DHL txt files to csv files for MongoDB import
 - Create MongoDB initialisation script (create database, create tables, load data)
+- Build REST API around this (Dropwizard, maybe Node.JS later)
