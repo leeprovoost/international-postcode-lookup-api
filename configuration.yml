@@ -1,0 +1,7 @@
+mongoHost: "localhost"
+mongoPort: 27017
+mongoDb: "test"
+
+http:
+ port: 3000
+ adminPort: 3002
