@@ -1,6 +1,8 @@
-# DHL Routing Reference Data API (ESDv6)
+# DHL Routing Reference Data API
 
 This is a Java Dropwizard API wrapper around DHL's publicly available [Routing Reference Data](http://www.dhl.co.uk/en/express/resource_centre/integrated_shipping_solutions/developer_download_centre1.html#reference_data).
+
+This supports ESDv6 (latest version on 21 April 2014).
 
 This is Alpha software quality and under heavy development.
 
