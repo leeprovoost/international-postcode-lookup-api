@@ -17,6 +17,6 @@ hs_err_pid*
 .settings/
 
 # exclude the full CSV files, only upload the zipped versions
-routing_reference_data/country.csv
-routing_reference_data/countrypc.csv
-routing_reference_data/ESDv6.csv
+routing-reference-data/country.csv
+routing-reference-data/countrypc.csv
+routing-reference-data/ESDv6.csv
