@@ -1,0 +1,114 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DHL Routing Reference Data API</title>
+    <link href="content/styles.css" rel="stylesheet" />
+    <script type="text/javascript" src="scripts/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="scripts/jquery-ui-1.10.4.js"></script>
+    <script type="text/javascript" src="scripts/jquery.autocomplete.js"></script>
+    <script type="text/javascript" language="javascript">
+
+        $(document).ready(function() {
+
+            var countries = [];
+            $.getJSON("http://localhost:3000/intl-routing-api/countries", callbackFuncWithData);
+            function callbackFuncWithData(data) {
+                $.each(data, function(i, item) {
+                    countries[i] = { value: item.b, data: item.a };
+                });
+            }
+
+            $('#country').autocomplete({
+                lookup: countries,
+                transformResult: function(response) {
+                    return {
+                        suggestions: $.map(response, function(item) {
+                            return { value: item.b, data: item.a };
+                        })
+                    };
+                },
+                onSelect: function (suggestion) {
+                    $("#country").val(suggestion.value);
+                    $("#countrycode").val(suggestion.data);
+                }
+            });
+
+            $('#postcode').autocomplete({
+                serviceUrl: 'http://localhost:3000/intl-routing-api/cities',
+                minChars: 1,
+                deferRequestBy: 250,
+                dataType: 'json',
+                paramName: 'postcode',
+                cacheLength: 0,
+                params: {country: $("#countrycode").val()},
+                transformResult: function(response) {
+                    return {
+                        suggestions: $.map(response, function(item) {
+                            return { value: item.g + " " + item.e, data: item.g + " " + item.e };
+                        })
+                    };
+                },
+                onSelect: function (suggestion) {
+                    $("#postcode").val(suggestion.value);
+                }
+            });
+
+            $('#city').autocomplete({
+                serviceUrl: 'http://localhost:3000/intl-routing-api/cities',
+                minChars: 1,
+                deferRequestBy: 250,
+                dataType: 'json',
+                paramName: 'city',
+                params: {country: $("#countrycode").val()},
+                transformResult: function(response) {
+                    return {
+                        suggestions: $.map(response, function(item) {
+                            return { value: item.e + " " + item.g, data: item.e + " " + item.g };
+                        })
+                    };
+                },
+                onSelect: function (suggestion) {
+                    $("#city").val(suggestion.value);
+                }
+            });
+
+        });
+
+        $(function () {
+
+
+        });
+
+   </script>
+
+</head>
+<body>
+
+    <div class="container">
+        <h1>DHL Routing Reference Data API</h1>
+        <p>Country:</p>
+        <div>
+            <input type="text" name="country" id="country" value="UNITED KINGDOM" readonly/>
+            <input type="text" name="countrycode" id="countrycode" value="GB" readonly />
+        </div>
+        <h2>Postcode Lookup</h2>
+        <p>Postcode:</p>
+        <div>
+            <input type="text" name="postcode" id="postcode"/>
+        </div>
+        <h2>City Lookup</h2>
+        <p>City:</p>
+        <div>
+            <input type="text" name="city" id="city"/>
+        </div>
+
+    </div>
+    
+
+</body>
+</html>
+
+
+
+
