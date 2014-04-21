@@ -15,7 +15,7 @@ This is Alpha software quality and under heavy development.
 3. Go into the rest-service folder and build the service: `./build.sh`
 4. Start the REST service: `./run.sh`
 
-## Test your REST service
+## Test the REST service directly
 
 - View API listing: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 - View Swagger UI: [http://localhost:3000/swagger-ui/index.html](http://localhost:3000/swagger-ui/index.html)
@@ -23,9 +23,17 @@ This is Alpha software quality and under heavy development.
 - Get list of cities (by default limited to 25): [http://localhost:3000/intl-routing-api/cities/](http://localhost:3000/intl-routing-api/cities/)
 - View postcode lookup results: [http://localhost:3000/intl-routing-api/cities/?country=GB&postcode=SW8](http://localhost:3000/intl-routing-api/cities/?countryCode=GB&postcode=SW8)
 
+## Use the experimental JQuery front-end
+
+Note: Due to some loading issue that I am looking into, it's locked to UK postcode and city lookups right now.
+
+1. Open [http://localhost/frontend-jquery/index.html](http://localhost/frontend-jquery/index.html)
+2. Start typing in a UK postcode or a UK city
+
 ## TODO
 
-- Create test front-end
+- Fix loading issue in JQuery code (front-end), currently locked to UK addresses
+- Fix mongodb import code, force all fields to be string instead of mixed string and integer
 - Create conversion scripts for the DHL data files
 - Use proper Data Transfer Objects instead of passing on the model object and hide ugliness of mongodb objects
 - Implement Exception handling
