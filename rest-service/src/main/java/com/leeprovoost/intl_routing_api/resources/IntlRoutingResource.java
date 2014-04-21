@@ -55,7 +55,7 @@ public class IntlRoutingResource {
     		  @ApiResponse(code = 404, message = "No cities found") 
     		})
     public Response getESDListByPostcode(
-    		@ApiParam(value = "Country Code (optional)", required = false, allowMultiple = false) @QueryParam("code") String countryCode,
+    		@ApiParam(value = "Country Code (optional)", required = false, allowMultiple = false) @QueryParam("country") String countryCode,
     		@ApiParam(value = "Postcode, can be partial. e.g. SW will give you SW1, SW2, etc. (optional)", required = false, allowMultiple = false) @QueryParam("postcode") String partialPostcode,
     		@ApiParam(value = "City Name (optional)", required = false, allowMultiple = false) @QueryParam("city") String partialCityName,
     		@ApiParam(value = "Limit results (optional)", required = false, allowMultiple = false) @QueryParam("limit") Integer limitResults) {	 	
