@@ -1,5 +1,7 @@
 package com.leeprovoost.intl_routing_api;
 
+import org.eclipse.jetty.servlets.CrossOriginFilter;
+
 import com.leeprovoost.intl_routing_api.health.IntlPostcodeHealthCheck;
 import com.leeprovoost.intl_routing_api.repository.IntlRoutingRepository;
 import com.leeprovoost.intl_routing_api.resources.IntlRoutingResource;
@@ -19,6 +21,7 @@ import com.yammer.dropwizard.Service;
 import com.yammer.dropwizard.assets.AssetsBundle;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
+import com.yammer.dropwizard.config.FilterBuilder;
 
 public class ApplicationService extends Service<ApplicationConfiguration> {
 
@@ -59,6 +62,11 @@ public class ApplicationService extends Service<ApplicationConfiguration> {
         
         // Healthchecks
         environment.addHealthCheck(new IntlPostcodeHealthCheck());
+        
+        // Support AJAX CORS
+        FilterBuilder filterConfig = environment.addFilter(CrossOriginFilter.class, "/*");
+        filterConfig.setInitParam(CrossOriginFilter.PREFLIGHT_MAX_AGE_PARAM, String.valueOf(60*60*24)); // 1 day - jetty-servlet CrossOriginFilter will convert to Int.
+        filterConfig.setInitParam(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "http://localhost"); // comma separated list of allowed origin domains
         
 	}
 
