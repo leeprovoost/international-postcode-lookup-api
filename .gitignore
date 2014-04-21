@@ -15,3 +15,8 @@ hs_err_pid*
 .classpath
 .project
 .settings/
+
+# exclude the full CSV files, only upload the zipped versions
+routing_reference_data/country.csv
+routing_reference_data/countrypc.csv
+routing_reference_data/ESDv6.csv
