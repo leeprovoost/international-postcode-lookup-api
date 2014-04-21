@@ -27,8 +27,9 @@ This is Alpha software quality and under heavy development.
 
 Note: Due to some loading issue that I am looking into, it's locked to UK postcode and city lookups right now.
 
-1. Open [http://localhost/frontend-jquery/index.html](http://localhost/frontend-jquery/index.html)
-2. Start typing in a UK postcode or a UK city
+1. Host the HTML page on your local Apache server
+2. Open [http://localhost/frontend-jquery/index.html](http://localhost/frontend-jquery/index.html) (add the right port number)
+3. Start typing in a UK postcode or a UK city
 
 ## TODO
 
