@@ -4,26 +4,16 @@ This is a Java Dropwizard API wrapper around DHL's publicly available [Routing R
 
 This is Alpha software quality and under heavy development.
 
-## Includes 
-- Dropwizard 0.6.2
-- Swagger 1.2
+## Get your REST service running
 
-## Setup
+1. Make sure you have mongodb installed
+2. Run the MongoDB database: mongod
+3. Clone this git repository: git clone git@github.com:leeprovoost/dhl-routing-reference-data-api.git
+4. Import the DHL data, follow instructions [here](https://github.com/leeprovoost/dhl-routing-reference-data-api/tree/master/routing_reference_data).
+3. Go into the rest-service folder and build the service: ./build.sh (mvn package)
+4. Start the REST service: ./run.sh
 
-1. Install MongoDB: todo
-2. Clone repository: git clone git@github.com:leeprovoost/dhl-routing-reference-data-api.git
-3. Build using Maven: mvn package
-
-## Set up your MongoDB database
-
-See [here](https://github.com/leeprovoost/dhl-routing-reference-data-api/tree/master/routing_reference_data).
-
-## Start your application
-
-- Start MongoDB: mongod
-- Start REST service: java -jar target/intl-routing-api-0.0.1-SNAPSHOT.jar server configuration.yml
-
-## Test your application
+## Test your REST service
 
 - View API listing: http://localhost:3000/api-docs
 - View Swagger UI: http://localhost:3000/swagger-ui/index.html
