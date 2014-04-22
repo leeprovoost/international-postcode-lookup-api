@@ -23,6 +23,8 @@ This is Alpha software quality and under heavy development.
 - Get list of cities (by default limited to 25): [http://localhost:3000/intl-routing-api/cities/](http://localhost:3000/intl-routing-api/cities/)
 - View postcode lookup results: [http://localhost:3000/intl-routing-api/cities/?country=GB&postcode=SW8](http://localhost:3000/intl-routing-api/cities/?countryCode=GB&postcode=SW8)
 
+![Swagger UI](https://github.com/leeprovoost/dhl-routing-reference-data-api/raw/master/screenshots/swagger.png)
+
 ## Use the experimental JQuery front-end
 
 Note: Due to some loading issue that I am looking into, it's locked to UK postcode and city lookups right now.
@@ -30,6 +32,8 @@ Note: Due to some loading issue that I am looking into, it's locked to UK postco
 1. Host the HTML page on your local Apache server
 2. Open [http://localhost/frontend-jquery/index.html](http://localhost/frontend-jquery/index.html) (add the right port number)
 3. Start typing in a UK postcode or a UK city
+
+![Postcode lookup](https://github.com/leeprovoost/dhl-routing-reference-data-api/blob/master/screenshots/front-end-postcode.png) ![City lookup](https://github.com/leeprovoost/dhl-routing-reference-data-api/blob/master/screenshots/front-end-city.png)
 
 ## TODO
 
