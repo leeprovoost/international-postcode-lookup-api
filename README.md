@@ -33,7 +33,7 @@ Note: Due to some loading issue that I am looking into, it's locked to UK postco
 2. Open [http://localhost/frontend-jquery/index.html](http://localhost/frontend-jquery/index.html) (add the right port number)
 3. Start typing in a UK postcode or a UK city
 
-![Postcode lookup](https://github.com/leeprovoost/dhl-routing-reference-data-api/blob/master/screenshots/front-end-postcode.png) ![City lookup](https://github.com/leeprovoost/dhl-routing-reference-data-api/blob/master/screenshots/front-end-city.png)
+![Postcode lookup](https://github.com/leeprovoost/dhl-routing-reference-data-api/raw/master/screenshots/front-end-postcode.png) ![City lookup](https://github.com/leeprovoost/dhl-routing-reference-data-api/raw/master/screenshots/front-end-city.png)
 
 ## TODO
 
