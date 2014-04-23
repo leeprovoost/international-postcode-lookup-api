@@ -39,7 +39,7 @@ Note: You won't be able to look for postcodes that are numeric (e.g. 3521 in the
 
 - Rename DHL Routing Reference Data API to DHL International Postcode Lookup API (in documentation and code)
 - ~~Create JQuery front-end~~
-- ~~Fix loading issue in JQuery code (front-end), currently locked to UK addresses~
+- ~~Fix loading issue in JQuery code (front-end), currently locked to UK addresses~~ 
 - Create Java-based file conversion and import script for MongoDB
 - Use proper Data Transfer Objects instead of passing on the model object and hide ugliness of mongodb objects
 - Implement Exception handling
