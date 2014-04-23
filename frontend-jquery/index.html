@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>DHL Routing Reference Data API</title>
+    <title>DHL International Postcode Lookup API</title>
     <link href="content/styles.css" rel="stylesheet" />
     <script type="text/javascript" src="scripts/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="scripts/jquery-ui-1.10.4.js"></script>
@@ -31,6 +31,9 @@
                 onSelect: function (suggestion) {
                     $("#country").val(suggestion.value);
                     $("#countrycode").val(suggestion.data);
+                    // added this ugliness to force a reload with the new values
+                    location.reload();
+
                 }
             });
 
@@ -86,11 +89,11 @@
 <body>
 
     <div class="container">
-        <h1>DHL Routing Reference Data API</h1>
+        <h1>DHL International Postcode Lookup API</h1>
         <p>Country:</p>
         <div>
-            <input type="text" name="country" id="country" value="UNITED KINGDOM" readonly/>
-            <input type="text" name="countrycode" id="countrycode" value="GB" readonly />
+            <input type="text" name="country" id="country" />
+            <input type="text" name="countrycode" id="countrycode" />
         </div>
         <h2>Postcode Lookup</h2>
         <p>Postcode:</p>

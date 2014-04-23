@@ -27,7 +27,7 @@ This is Alpha software quality and under heavy development.
 
 ## Use the experimental JQuery front-end
 
-Note: Due to some loading issue that I am looking into, it's locked to UK postcode and city lookups right now.
+Note: You won't be able to look for postcodes that are numeric (e.g. 3521 in the Netherlands) due to a field type mismatch in MongoDB that I am resolving now.
 
 1. Host the HTML page on your local Apache server
 2. Open [http://localhost/frontend-jquery/index.html](http://localhost/frontend-jquery/index.html) (add the right port number)
@@ -37,9 +37,9 @@ Note: Due to some loading issue that I am looking into, it's locked to UK postco
 
 ## TODO
 
-- Fix loading issue in JQuery code (front-end), currently locked to UK addresses
-- Fix mongodb import code, force all fields to be string instead of mixed string and integer
-- Create conversion scripts for the DHL data files
+- ~~Create JQuery front-end~~
+- ~~Fix loading issue in JQuery code (front-end), currently locked to UK addresses~~
+- Create Java-based file conversion and import script for MongoDB
 - Use proper Data Transfer Objects instead of passing on the model object and hide ugliness of mongodb objects
 - Implement Exception handling
 - Add tests
