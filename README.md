@@ -1,10 +1,13 @@
-# DHL Routing Reference Data API
+# International Postcode Lookup API
 
-This is a Java Dropwizard API wrapper around DHL's publicly available [Routing Reference Data](http://www.dhl.co.uk/en/express/resource_centre/integrated_shipping_solutions/developer_download_centre1.html#reference_data).
+This is a Java Dropwizard API wrapper around DHL's publicly available [Routing Reference Data](http://www.dhl.co.uk/en/express/resource_centre/integrated_shipping_solutions/developer_download_centre1.html#reference_data). It uses a subset of the data to allow international postcode lookups. This is useful for companies that have DHL as a delivery partner and want to ensure that the postcode and city combination match the ones that DHL use.
 
-This supports ESDv6 (latest version on 21 April 2014).
+This supports ESDv6 (latest version on 21 April 2014). 
 
-This is Alpha software quality and under heavy development.
+Please note that:
+- this is Alpha software quality and under heavy development; and
+- this is not affiliated with or endorsed by DHL; and
+- this project only gives you data conversion tools and a REST wrapper around DHL's data set. You still need to agree with DHL whether you can use the data set for your intendend purposes.
 
 ## Get your REST service running
 
@@ -37,12 +40,12 @@ Note: You won't be able to look for postcodes that are numeric (e.g. 3521 in the
 
 ## TODO
 
-- Rename DHL Routing Reference Data API to DHL International Postcode Lookup API (in documentation and code)
+- Rename DHL Routing Reference Data API to DHL International Postcode Lookup API in documentation and code
 - ~~Create JQuery front-end~~
 - ~~Fix loading issue in JQuery code (front-end), currently locked to UK addresses~~ 
 - Create Java-based file conversion and import script for MongoDB
 - Use proper Data Transfer Objects instead of passing on the model object and hide ugliness of mongodb objects
 - Implement Exception handling
 - Add tests
-- Implement all business rules described in DHL book (validate postcode patterns)
+- Implement all business rules described in DHL's developer reference (validate postcode patterns)
 - Investigate MongoDB indexes or use of ElasticSearch
