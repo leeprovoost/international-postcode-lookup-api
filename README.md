@@ -40,4 +40,4 @@ Note: You won't be able to look for postcodes that are numeric (e.g. 3521 in the
 
 ## TODO
 
-See [issues page](./issues)
+See [issues page](https://github.com/leeprovoost/dhl-routing-reference-data-api/issues)
