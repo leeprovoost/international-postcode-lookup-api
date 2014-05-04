@@ -14,7 +14,7 @@ Please note that:
 1. Make sure you have mongodb installed
 2. Run the MongoDB database: `mongod`
 3. Clone this git repository: `git clone git@github.com:leeprovoost/dhl-routing-reference-data-api.git`
-4. Import the DHL data, follow instructions [here](https://github.com/leeprovoost/dhl-routing-reference-data-api/tree/master/routing_reference_data).
+4. Import the DHL data, follow instructions [here](https://github.com/leeprovoost/dhl-routing-reference-data-api/tree/master/routing-reference-data).
 3. Go into the rest-service folder and build the service: `./build.sh`
 4. Start the REST service: `./run.sh`
 
