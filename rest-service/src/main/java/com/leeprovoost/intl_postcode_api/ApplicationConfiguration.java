@@ -1,4 +1,4 @@
-package com.leeprovoost.intl_routing_api;
+package com.leeprovoost.intl_postcode_api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yammer.dropwizard.config.Configuration;

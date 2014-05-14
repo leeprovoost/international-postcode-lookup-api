@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.leeprovoost</groupId>
-	<artifactId>intl-routing-api</artifactId>
+	<artifactId>intl-postcode-api</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>intl-routing-api</name>
-	<description>REST wrapper for DHL's Routing Reference Data (ESDv6)</description>
+	<version>0.0.2-SNAPSHOT</version>
+	<name>intl-postcode-api</name>
+	<description>International Postcode Lookup REST Service based on DHL data</description>
 
 	<properties>
 		<dropwizard.version>0.6.2</dropwizard.version>
@@ -115,7 +115,7 @@
 									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.leeprovoost.intl_routing_api.ApplicationService</mainClass>
+									<mainClass>com.leeprovoost.intl_postcode_api.ApplicationService</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

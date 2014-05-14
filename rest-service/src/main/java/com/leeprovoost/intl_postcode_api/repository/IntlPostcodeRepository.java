@@ -1,11 +1,11 @@
-package com.leeprovoost.intl_routing_api.repository;
+package com.leeprovoost.intl_postcode_api.repository;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
-import com.leeprovoost.intl_routing_api.core.Country;
-import com.leeprovoost.intl_routing_api.core.CountryPc;
-import com.leeprovoost.intl_routing_api.core.ESD;
+import com.leeprovoost.intl_postcode_api.core.Country;
+import com.leeprovoost.intl_postcode_api.core.CountryPc;
+import com.leeprovoost.intl_postcode_api.core.ESD;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -14,17 +14,17 @@ import com.mongodb.QueryBuilder;
 
 import org.mongojack.JacksonDBCollection;
 
-public class IntlRoutingRepository {
+public class IntlPostcodeRepository {
 
-	public static final String COLLECTION_NAME_ESD = "intl_routing_api_ESD";
-	public static final String COLLECTION_NAME_country = "intl_routing_api_country";
-	public static final String COLLECTION_NAME_countrypc = "intl_routing_api_countrypc";
+	public static final String COLLECTION_NAME_ESD = "intl_postcode_api_ESD";
+	public static final String COLLECTION_NAME_country = "intl_postcode_api_country";
+	public static final String COLLECTION_NAME_countrypc = "intl_postcode_api_countrypc";
 	
     private JacksonDBCollection<ESD, String> ESDCollection;
     private JacksonDBCollection<Country, String> countryCollection;
     private JacksonDBCollection<CountryPc, String> countryPcCollection;
 
-    public IntlRoutingRepository(DB mongoDB) {
+    public IntlPostcodeRepository(DB mongoDB) {
         final DBCollection dbESD = mongoDB.getCollection(COLLECTION_NAME_ESD);
         dbESD.ensureIndex(new BasicDBObject("a", 1));
         final DBCollection dbCountry = mongoDB.getCollection(COLLECTION_NAME_country);
@@ -74,14 +74,17 @@ public class IntlRoutingRepository {
      * @param partialPostcode
      * @param limit
      * @return List<ESD>
+     * 
+     * TODO Implement post code ranges
      */
     public List<ESD> getESDListByPostcode(String countryCode, String partialPostcode, int limit) {
-
+    	
     	Pattern pattern = Pattern.compile("^" + partialPostcode.toUpperCase());
     	DBObject query = QueryBuilder.start().and(
-    						QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
-    						QueryBuilder.start("g").regex(pattern).get()
-    					).get();
+					QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
+					QueryBuilder.start("c").regex(pattern).get()
+				).get();
+
     	return ESDCollection.find(query).limit(limit).toArray();
     }
     /**
@@ -96,7 +99,7 @@ public class IntlRoutingRepository {
     	Pattern pattern = Pattern.compile("^" + partialCityName.toUpperCase());
     	DBObject query = QueryBuilder.start().and(
     						QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
-    						QueryBuilder.start("e").regex(pattern).get()
+    						QueryBuilder.start("b").regex(pattern).get()
     					).get();
     	return ESDCollection.find(query).limit(limit).toArray();
     }
@@ -107,6 +110,8 @@ public class IntlRoutingRepository {
      * @param partialPostCode
      * @param limit
      * @return List<ESD>
+     * 
+     * TODO Implement post code as integers and post code ranges
      */
     public List<ESD> getESDListByCityNameAndPostCode(String countryCode, String partialCityName, String partialPostCode, int limit) {
     	
@@ -114,8 +119,8 @@ public class IntlRoutingRepository {
     	Pattern postcodePattern = Pattern.compile("^" + partialPostCode.toUpperCase());
     	DBObject query = QueryBuilder.start().and(
     						QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
-    						QueryBuilder.start("e").regex(cityPattern).get(),
-    						QueryBuilder.start("g").regex(postcodePattern).get()
+    						QueryBuilder.start("b").regex(cityPattern).get(),
+    						QueryBuilder.start("c").regex(postcodePattern).get()
     					).get();
     	return ESDCollection.find(query).limit(limit).toArray();
     }

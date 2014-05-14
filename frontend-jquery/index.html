@@ -48,7 +48,7 @@
                 transformResult: function(response) {
                     return {
                         suggestions: $.map(response, function(item) {
-                            return { value: item.g + " " + item.e, data: item.g + " " + item.e };
+                            return { value: item.c + " " + item.b, data: item.c + " " + item.b };
                         })
                     };
                 },
@@ -67,7 +67,7 @@
                 transformResult: function(response) {
                     return {
                         suggestions: $.map(response, function(item) {
-                            return { value: item.e + " " + item.g, data: item.e + " " + item.g };
+                            return { value: item.b + " " + item.c, data: item.b + " " + item.c };
                         })
                     };
                 },

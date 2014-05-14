@@ -1,4 +1,4 @@
-package com.leeprovoost.intl_routing_api.core;
+package com.leeprovoost.intl_postcode_api.core;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -6,13 +6,17 @@ import org.mongojack.ObjectId;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlRootElement(name = "CountryPc")
-public class CountryPc {
+@XmlRootElement(name = "City")
+/**
+ * ESDv6
+ * @author leeprovoost
+ */
+public class ESD {
 
 	private String _id;
 	private String countryCode;
-	private String postcodeFormat;
-	private Integer significantDigits;
+	private String cityName;
+	private String postcode;
 	
 	@ObjectId
 	@JsonProperty("_id")
@@ -33,19 +37,21 @@ public class CountryPc {
 		this.countryCode = countryCode;
 	}
 	@JsonProperty("b")
-	public String getPostcodeFormat() {
-		return postcodeFormat;
+	public String getCityName() {
+		return cityName;
 	}
 	@JsonProperty("b")
-	public void setPostcodeFormat(String postcodeFormat) {
-		this.postcodeFormat = postcodeFormat;
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 	@JsonProperty("c")
-	public Integer getSignificantDigits() {
-		return significantDigits;
+	public String getPostcode() {
+		return postcode;
 	}
 	@JsonProperty("c")
-	public void setSignificantDigits(Integer significantDigits) {
-		this.significantDigits = significantDigits;
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
 	}
+
+	
 }

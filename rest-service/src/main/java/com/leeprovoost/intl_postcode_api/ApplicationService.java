@@ -1,11 +1,11 @@
-package com.leeprovoost.intl_routing_api;
+package com.leeprovoost.intl_postcode_api;
 
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 
-import com.leeprovoost.intl_routing_api.health.IntlPostcodeHealthCheck;
-import com.leeprovoost.intl_routing_api.repository.IntlRoutingRepository;
-import com.leeprovoost.intl_routing_api.resources.IntlRoutingResource;
-import com.leeprovoost.intl_routing_api.service.IntlRoutingService;
+import com.leeprovoost.intl_postcode_api.health.IntlPostcodeHealthCheck;
+import com.leeprovoost.intl_postcode_api.repository.IntlPostcodeRepository;
+import com.leeprovoost.intl_postcode_api.resources.IntlPostcodeResource;
+import com.leeprovoost.intl_postcode_api.service.IntlPostcodeService;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.wordnik.swagger.config.ConfigFactory;
@@ -31,7 +31,7 @@ public class ApplicationService extends Service<ApplicationConfiguration> {
    
 	@Override
 	public void initialize(Bootstrap<ApplicationConfiguration> bootstrap) {
-		bootstrap.setName("intl-routing-api");
+		bootstrap.setName("intl-postcode-api");
 		bootstrap.addBundle(new AssetsBundle("/swagger-ui"));
 	}
 
@@ -45,10 +45,10 @@ public class ApplicationService extends Service<ApplicationConfiguration> {
                 configuration.getMongoPort()
         ).getDB(configuration.getMongoDb());
 
-        final IntlRoutingRepository intlRoutingRepository = new IntlRoutingRepository(mongoDB);
+        final IntlPostcodeRepository intlRoutingRepository = new IntlPostcodeRepository(mongoDB);
 
-        IntlRoutingService inbtlRoutingService = new IntlRoutingService(intlRoutingRepository);
-        environment.addResource(new IntlRoutingResource(inbtlRoutingService));
+        IntlPostcodeService inbtlRoutingService = new IntlPostcodeService(intlRoutingRepository);
+        environment.addResource(new IntlPostcodeResource(inbtlRoutingService));
         
         // Swagger
         environment.addResource(new ApiListingResourceJSON());

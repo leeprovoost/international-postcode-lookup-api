@@ -1,4 +1,4 @@
-package com.leeprovoost.intl_routing_api.core;
+package com.leeprovoost.intl_postcode_api.core;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -13,8 +13,7 @@ public class Country {
 	private String countryCode;
 	private String countryName;
 	private String currencyCode;
-	// TODO change with Boolean
-	private String usePostcodeFlag;
+	private Boolean usePostcodeFlag;
 	
 	@ObjectId
 	@JsonProperty("_id")
@@ -51,12 +50,13 @@ public class Country {
 		this.currencyCode = currencyCode;
 	}
 	@JsonProperty("d")
-	public String getUsePostcodeFlag() {
+	public Boolean getUsePostcodeFlag() {
 		return usePostcodeFlag;
 	}
 	@JsonProperty("d")
-	public void setUsePostcodeFlag(String usePostcodeFlag) {
+	public void setUsePostcodeFlag(Boolean usePostcodeFlag) {
 		this.usePostcodeFlag = usePostcodeFlag;
 	}
+
 	
 }

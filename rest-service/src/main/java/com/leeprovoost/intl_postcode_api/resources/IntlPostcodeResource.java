@@ -1,28 +1,28 @@
-package com.leeprovoost.intl_routing_api.resources;
+package com.leeprovoost.intl_postcode_api.resources;
 
 import java.util.List;
 
-import com.leeprovoost.intl_routing_api.core.Country;
-import com.leeprovoost.intl_routing_api.core.ESD;
-import com.leeprovoost.intl_routing_api.service.CitiesNotFoundException;
-import com.leeprovoost.intl_routing_api.service.CountriesNotFoundException;
-import com.leeprovoost.intl_routing_api.service.IntlRoutingService;
+import com.leeprovoost.intl_postcode_api.core.Country;
+import com.leeprovoost.intl_postcode_api.core.ESD;
+import com.leeprovoost.intl_postcode_api.service.CitiesNotFoundException;
+import com.leeprovoost.intl_postcode_api.service.CountriesNotFoundException;
+import com.leeprovoost.intl_postcode_api.service.IntlPostcodeService;
 import com.wordnik.swagger.annotations.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path(value = "/intl-routing-api")
-@Api(value = "/intl-routing-api", description = "DHL International Routing API")
+@Path(value = "/intl-postcode-api")
+@Api(value = "/intl-postcode-api", description = "International Postcode Lookup API")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class IntlRoutingResource {
+public class IntlPostcodeResource {
 
-    private IntlRoutingService intlRoutingService;
+    private IntlPostcodeService intlPostcodeService;
 
-    public IntlRoutingResource(IntlRoutingService intlRoutingService) {
-        this.intlRoutingService = intlRoutingService;
+    public IntlPostcodeResource(IntlPostcodeService intlPostcodeService) {
+        this.intlPostcodeService = intlPostcodeService;
     }
 
     @GET
@@ -37,7 +37,7 @@ public class IntlRoutingResource {
     		})
     public Response getCountry() {	 	
         try {
-            List<Country> countryList = intlRoutingService.getCountryList();
+            List<Country> countryList = intlPostcodeService.getCountryList();
             return Response.ok(countryList).build();
         } catch (CountriesNotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -68,19 +68,19 @@ public class IntlRoutingResource {
         	if (countryCode != null) {
         		// Country code + Post code
         		if (partialPostcode != null && partialCityName == null) {
-        			esdList = intlRoutingService.getCitiesListByPostcode(countryCode, partialPostcode, limit);
+        			esdList = intlPostcodeService.getCitiesListByPostcode(countryCode, partialPostcode, limit);
         		// Country code + City name
         		} else if (partialPostcode == null && partialCityName != null){
-        			esdList = intlRoutingService.getCitiesListByCityName(countryCode, partialCityName, limit);
+        			esdList = intlPostcodeService.getCitiesListByCityName(countryCode, partialCityName, limit);
         		// Country code + City name + Post code
         		} else if (partialPostcode != null && partialCityName != null) {
-        			esdList = intlRoutingService.getCitiesListByCityNameAndPostCode(countryCode, partialCityName, partialPostcode, limit);
+        			esdList = intlPostcodeService.getCitiesListByCityNameAndPostCode(countryCode, partialCityName, partialPostcode, limit);
         		// Country code
         		} else {
-        			esdList = intlRoutingService.getCitiesListByCountryCode(countryCode, limit);
+        			esdList = intlPostcodeService.getCitiesListByCountryCode(countryCode, limit);
         		}
         	} else {
-        		esdList = intlRoutingService.getCitiesList(limit);
+        		esdList = intlPostcodeService.getCitiesList(limit);
         	}
             return Response.ok(esdList).build();
         } catch (CitiesNotFoundException e) {

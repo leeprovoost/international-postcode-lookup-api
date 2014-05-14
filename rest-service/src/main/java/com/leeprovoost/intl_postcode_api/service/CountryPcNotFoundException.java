@@ -1,4 +1,4 @@
-package com.leeprovoost.intl_routing_api.service;
+package com.leeprovoost.intl_postcode_api.service;
 
 public class CountryPcNotFoundException extends RuntimeException {
 

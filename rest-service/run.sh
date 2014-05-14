@@ -1,2 +1,2 @@
 #! /bin/sh
-/usr/bin/java -jar target/intl-routing-api-0.0.1-SNAPSHOT.jar server configuration.yml
+/usr/bin/java -jar target/intl-postcode-api-0.0.2-SNAPSHOT.jar server configuration.yml
