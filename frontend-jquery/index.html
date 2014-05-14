@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>DHL International Postcode Lookup API</title>
+    <title>International Postcode Lookup API</title>
     <link href="content/styles.css" rel="stylesheet" />
     <script type="text/javascript" src="scripts/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="scripts/jquery-ui-1.10.4.js"></script>
@@ -12,7 +12,7 @@
         $(document).ready(function() {
 
             var countries = [];
-            $.getJSON("http://localhost:3000/intl-routing-api/countries", callbackFuncWithData);
+            $.getJSON("http://localhost:3000/intl-postcode-api/countries", callbackFuncWithData);
             function callbackFuncWithData(data) {
                 $.each(data, function(i, item) {
                     countries[i] = { value: item.b, data: item.a };
@@ -38,7 +38,7 @@
             });
 
             $('#postcode').autocomplete({
-                serviceUrl: 'http://localhost:3000/intl-routing-api/cities',
+                serviceUrl: 'http://localhost:3000/intl-postcode-api/cities',
                 minChars: 1,
                 deferRequestBy: 250,
                 dataType: 'json',
@@ -58,7 +58,7 @@
             });
 
             $('#city').autocomplete({
-                serviceUrl: 'http://localhost:3000/intl-routing-api/cities',
+                serviceUrl: 'http://localhost:3000/intl-postcode-api/cities',
                 minChars: 1,
                 deferRequestBy: 250,
                 dataType: 'json',
