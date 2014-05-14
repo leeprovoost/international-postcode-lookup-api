@@ -13,8 +13,8 @@ Please note that:
 
 1. Make sure you have mongodb installed
 2. Run the MongoDB database: `mongod`
-3. Clone this git repository: `git clone git@github.com:leeprovoost/dhl-routing-reference-data-api.git`
-4. Import the DHL data, follow instructions [here](https://github.com/leeprovoost/dhl-routing-reference-data-api/tree/master/routing-reference-data).
+3. Clone this git repository: `git clone git@github.com:leeprovoost/international-postcode-lookup-api.git`
+4. Import the DHL data, follow instructions [here](https://github.com/leeprovoost/dhl-routing-reference-data-to-mongodb).
 3. Go into the rest-service folder and build the service: `./build.sh`
 4. Start the REST service: `./run.sh`
 
@@ -22,22 +22,20 @@ Please note that:
 
 - View API listing: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 - View Swagger UI: [http://localhost:3000/swagger-ui/index.html](http://localhost:3000/swagger-ui/index.html)
-- Get list of all countries: [http://localhost:3000/intl-routing-api/countries/](http://localhost:3000/intl-routing-api/countries/)
-- Get list of cities (by default limited to 25): [http://localhost:3000/intl-routing-api/cities/](http://localhost:3000/intl-routing-api/cities/)
-- View postcode lookup results: [http://localhost:3000/intl-routing-api/cities/?country=GB&postcode=SW8](http://localhost:3000/intl-routing-api/cities/?countryCode=GB&postcode=SW8)
+- Get list of all countries: [http://localhost:3000/intl-postcode-api/countries/](http://localhost:3000/intl-postcode-api/countries/)
+- Get list of cities (by default limited to 25): [http://localhost:3000/intl-postcode-api/cities/](http://localhost:3000/intl-postcode-api/cities/)
+- View postcode lookup results: [http://localhost:3000/intl-postcode-api/cities/?country=GB&postcode=SW8](http://localhost:3000/intl-postcode-api/cities/?countryCode=GB&postcode=SW8)
 
-![Swagger UI](https://github.com/leeprovoost/dhl-routing-reference-data-api/raw/master/screenshots/swagger.png)
+![Swagger UI](https://github.com/leeprovoost/international-postcode-lookup-api/raw/master/screenshots/swagger.png)
 
 ## Use the experimental JQuery front-end
-
-Note: You won't be able to look for postcodes that are numeric (e.g. 3521 in the Netherlands) due to a field type mismatch in MongoDB that I am resolving now.
 
 1. Host the HTML page on your local Apache server
 2. Open [http://localhost/frontend-jquery/index.html](http://localhost/frontend-jquery/index.html) (add the right port number)
 3. Start typing in a UK postcode or a UK city
 
-![JQuery front-end](https://github.com/leeprovoost/dhl-routing-reference-data-api/raw/master/screenshots/front-end.png)
+![JQuery front-end](https://github.com/leeprovoost/international-postcode-lookup-api/raw/master/screenshots/front-end.png)
 
 ## TODO
 
-See [issues page](https://github.com/leeprovoost/dhl-routing-reference-data-api/issues)
+See [issues page](https://github.com/leeprovoost/international-postcode-lookup-api/issues)
