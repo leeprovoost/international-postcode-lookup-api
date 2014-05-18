@@ -23,6 +23,7 @@ Please note that:
 - View API listing: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 - View Swagger UI: [http://localhost:3000/swagger-ui/index.html](http://localhost:3000/swagger-ui/index.html)
 - Get list of all countries: [http://localhost:3000/intl-postcode-api/countries/](http://localhost:3000/intl-postcode-api/countries/)
+- Get list of all country postcode formatting rules: [http://localhost:3000/intl-postcode-api/country-postcodes/](http://localhost:3000/intl-postcode-api/country-postcodes/)
 - Get list of cities (by default limited to 25): [http://localhost:3000/intl-postcode-api/cities/](http://localhost:3000/intl-postcode-api/cities/)
 - View postcode lookup results: [http://localhost:3000/intl-postcode-api/cities/?country=GB&postcode=SW8](http://localhost:3000/intl-postcode-api/cities/?countryCode=GB&postcode=SW8)
 
