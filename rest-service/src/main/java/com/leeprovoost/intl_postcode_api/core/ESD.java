@@ -16,6 +16,7 @@ public class ESD {
 	private String _id;
 	private String countryCode;
 	private String cityName;
+	private String suburbName;
 	private String postcode;
 	
 	@ObjectId
@@ -45,10 +46,18 @@ public class ESD {
 		this.cityName = cityName;
 	}
 	@JsonProperty("c")
+	public String getSuburbName() {
+		return suburbName;
+	}
+	@JsonProperty("c")
+	public void setSuburbName(String suburbName) {
+		this.suburbName = suburbName;
+	}
+	@JsonProperty("d")
 	public String getPostcode() {
 		return postcode;
 	}
-	@JsonProperty("c")
+	@JsonProperty("d")
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}

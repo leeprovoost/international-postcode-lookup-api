@@ -82,7 +82,7 @@ public class IntlPostcodeRepository {
     	Pattern pattern = Pattern.compile("^" + partialPostcode.toUpperCase());
     	DBObject query = QueryBuilder.start().and(
 					QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
-					QueryBuilder.start("c").regex(pattern).get()
+					QueryBuilder.start("d").regex(pattern).get()
 				).get();
 
     	return ESDCollection.find(query).limit(limit).toArray();
@@ -120,7 +120,7 @@ public class IntlPostcodeRepository {
     	DBObject query = QueryBuilder.start().and(
     						QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
     						QueryBuilder.start("b").regex(cityPattern).get(),
-    						QueryBuilder.start("c").regex(postcodePattern).get()
+    						QueryBuilder.start("d").regex(postcodePattern).get()
     					).get();
     	return ESDCollection.find(query).limit(limit).toArray();
     }
