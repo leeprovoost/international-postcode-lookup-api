@@ -3,19 +3,23 @@ package com.leeprovoost.intl_postcode_api.service;
 import java.util.List;
 
 import com.leeprovoost.intl_postcode_api.core.Country;
+import com.leeprovoost.intl_postcode_api.core.CountryPostcode;
 import com.leeprovoost.intl_postcode_api.core.ESD;
-import com.leeprovoost.intl_postcode_api.repository.IntlPostcodeRepository;
+import com.leeprovoost.intl_postcode_api.db.IntlPostcodeDao;
 
 public class IntlPostcodeService {
 
-    private final IntlPostcodeRepository intlPostcodeRepository;
+    private final IntlPostcodeDao intlPostcodeRepository;
 	
-    public IntlPostcodeService(IntlPostcodeRepository intlPostcodeRepository) {
+    public IntlPostcodeService(IntlPostcodeDao intlPostcodeRepository) {
         this.intlPostcodeRepository = intlPostcodeRepository;
     }
 
     public List<Country> getCountryList() {
     	return intlPostcodeRepository.getCountryList();
+    }
+    public List<CountryPostcode> getCountryPostcodeList() {
+    	return intlPostcodeRepository.getCountryPostcodeList();
     }
     public List<ESD> getCitiesList(int limit) {
     	return intlPostcodeRepository.getESDList(limit);

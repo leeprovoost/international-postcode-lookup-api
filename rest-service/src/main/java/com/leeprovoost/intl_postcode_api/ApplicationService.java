@@ -2,8 +2,8 @@ package com.leeprovoost.intl_postcode_api;
 
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 
+import com.leeprovoost.intl_postcode_api.db.IntlPostcodeDao;
 import com.leeprovoost.intl_postcode_api.health.IntlPostcodeHealthCheck;
-import com.leeprovoost.intl_postcode_api.repository.IntlPostcodeRepository;
 import com.leeprovoost.intl_postcode_api.resources.IntlPostcodeResource;
 import com.leeprovoost.intl_postcode_api.service.IntlPostcodeService;
 import com.mongodb.DB;
@@ -45,7 +45,7 @@ public class ApplicationService extends Service<ApplicationConfiguration> {
                 configuration.getMongoPort()
         ).getDB(configuration.getMongoDb());
 
-        final IntlPostcodeRepository intlRoutingRepository = new IntlPostcodeRepository(mongoDB);
+        final IntlPostcodeDao intlRoutingRepository = new IntlPostcodeDao(mongoDB);
 
         IntlPostcodeService inbtlRoutingService = new IntlPostcodeService(intlRoutingRepository);
         environment.addResource(new IntlPostcodeResource(inbtlRoutingService));

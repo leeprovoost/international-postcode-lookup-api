@@ -1,10 +1,10 @@
-package com.leeprovoost.intl_postcode_api.repository;
+package com.leeprovoost.intl_postcode_api.db;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 import com.leeprovoost.intl_postcode_api.core.Country;
-import com.leeprovoost.intl_postcode_api.core.CountryPc;
+import com.leeprovoost.intl_postcode_api.core.CountryPostcode;
 import com.leeprovoost.intl_postcode_api.core.ESD;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -14,7 +14,7 @@ import com.mongodb.QueryBuilder;
 
 import org.mongojack.JacksonDBCollection;
 
-public class IntlPostcodeRepository {
+public class IntlPostcodeDao {
 
 	public static final String COLLECTION_NAME_ESD = "intl_postcode_api_ESD";
 	public static final String COLLECTION_NAME_country = "intl_postcode_api_country";
@@ -22,22 +22,22 @@ public class IntlPostcodeRepository {
 	
     private JacksonDBCollection<ESD, String> ESDCollection;
     private JacksonDBCollection<Country, String> countryCollection;
-    private JacksonDBCollection<CountryPc, String> countryPcCollection;
+    private JacksonDBCollection<CountryPostcode, String> countryPostcodeCollection;
 
-    public IntlPostcodeRepository(DB mongoDB) {
+    public IntlPostcodeDao(DB mongoDB) {
         final DBCollection dbESD = mongoDB.getCollection(COLLECTION_NAME_ESD);
         dbESD.ensureIndex(new BasicDBObject("a", 1));
         final DBCollection dbCountry = mongoDB.getCollection(COLLECTION_NAME_country);
         final DBCollection dbCountryPc = mongoDB.getCollection(COLLECTION_NAME_countrypc);
         this.ESDCollection = JacksonDBCollection.wrap(dbESD, ESD.class, String.class);
         this.countryCollection = JacksonDBCollection.wrap(dbCountry, Country.class, String.class);
-        this.countryPcCollection = JacksonDBCollection.wrap(dbCountryPc, CountryPc.class, String.class);
+        this.countryPostcodeCollection = JacksonDBCollection.wrap(dbCountryPc, CountryPostcode.class, String.class);
     }
 
     public void drop() {
     	ESDCollection.drop();
     	countryCollection.drop();
-    	countryPcCollection.drop();
+    	countryPostcodeCollection.drop();
     }
 
     /**
@@ -46,6 +46,14 @@ public class IntlPostcodeRepository {
      */
     public List<Country> getCountryList() {
     	return countryCollection.find().toArray();
+    }
+    
+    /**
+     * Get list of all country postcode formatting rules
+     * @return List<CountryPostcode>
+     */
+    public List<CountryPostcode> getCountryPostcodeList() {
+    	return countryPostcodeCollection.find().toArray();
     }
     
     /**

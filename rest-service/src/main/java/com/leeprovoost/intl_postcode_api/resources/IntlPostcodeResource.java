@@ -3,6 +3,7 @@ package com.leeprovoost.intl_postcode_api.resources;
 import java.util.List;
 
 import com.leeprovoost.intl_postcode_api.core.Country;
+import com.leeprovoost.intl_postcode_api.core.CountryPostcode;
 import com.leeprovoost.intl_postcode_api.core.ESD;
 import com.leeprovoost.intl_postcode_api.service.CitiesNotFoundException;
 import com.leeprovoost.intl_postcode_api.service.CountriesNotFoundException;
@@ -35,10 +36,29 @@ public class IntlPostcodeResource {
     		  @ApiResponse(code = 200, message = "List of countries"),
     		  @ApiResponse(code = 404, message = "No countries found") 
     		})
-    public Response getCountry() {	 	
+    public Response getCountries() {	 	
         try {
             List<Country> countryList = intlPostcodeService.getCountryList();
             return Response.ok(countryList).build();
+        } catch (CountriesNotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+    
+    @GET
+    @Path("/country-postcodes/")
+    @ApiOperation(
+    		value = "Get a list of country postcode formatting rules",
+    		notes = "<p><strong>Service Name</strong>: getCountryPostcodes (internal)</p>", 
+            response = Country.class)
+    @ApiResponses(value = {
+    		  @ApiResponse(code = 200, message = "List of country postcode formatting rules"),
+    		  @ApiResponse(code = 404, message = "No country postcode formatting rules found") 
+    		})
+    public Response getCountryPostcodes() {	 	
+        try {
+            List<CountryPostcode> countryPostcodeList = intlPostcodeService.getCountryPostcodeList();
+            return Response.ok(countryPostcodeList).build();
         } catch (CountriesNotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

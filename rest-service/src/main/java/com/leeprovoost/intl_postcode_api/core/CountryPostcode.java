@@ -6,8 +6,8 @@ import org.mongojack.ObjectId;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlRootElement(name = "CountryPc")
-public class CountryPc {
+@XmlRootElement(name = "CountryPostcode")
+public class CountryPostcode {
 
 	private String _id;
 	private String countryCode;
