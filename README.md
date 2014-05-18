@@ -31,9 +31,11 @@ Please note that:
 
 ## Use the experimental JQuery front-end
 
+Note: there is currently a small reload bug, so when you want to enter a new country, just load the page again. Will fix it in the next release.
+
 1. Host the HTML page on your local Apache server
 2. Open [http://localhost/frontend-jquery/index.html](http://localhost/frontend-jquery/index.html) (add the right port number)
-3. Start typing in a UK postcode or a UK city
+3. Start typing in a postcode or a city
 
 ![JQuery front-end](https://github.com/leeprovoost/international-postcode-lookup-api/raw/master/screenshots/front-end.png)
 
