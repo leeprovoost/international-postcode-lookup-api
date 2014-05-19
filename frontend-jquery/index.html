@@ -12,28 +12,29 @@
         $(document).ready(function() {
 
             var countries = [];
-            $.getJSON("http://localhost:3000/intl-postcode-api/countries", callbackFuncWithData);
-            function callbackFuncWithData(data) {
+            $.getJSON("http://localhost:3000/intl-postcode-api/countries", callbackFuncWithCountryData);
+            function callbackFuncWithCountryData(data) {
                 $.each(data, function(i, item) {
-                    countries[i] = { value: item.b, data: item.a };
+                    countries[i] = { value: item.b, data: [item.a,item.b,item.d] };
+                });
+            }
+
+            var countryPostcodes = [];
+            $.getJSON("http://localhost:3000/intl-postcode-api/country-postcodes", callbackFuncWithCountryPostcodeData);
+            function callbackFuncWithCountryPostcodeData(data) {
+                $.each(data, function(i, item) {
+                    countryPostcodes[i] = { value: item.a, data: item.b };
                 });
             }
 
             $('#country').autocomplete({
                 lookup: countries,
-                transformResult: function(response) {
-                    return {
-                        suggestions: $.map(response, function(item) {
-                            return { value: item.b, data: item.a };
-                        })
-                    };
-                },
                 onSelect: function (suggestion) {
                     $("#country").val(suggestion.value);
-                    $("#countrycode").val(suggestion.data);
+                    $("#countrycode").val(suggestion.data[0]);
+                    $("#postcodeflag").val(suggestion.data[2]);
                     // added this ugliness to force a reload with the new values
                     location.reload();
-
                 }
             });
 
@@ -57,17 +58,21 @@
                 }
             });
 
+            var cityValue = "";
             $('#city').autocomplete({
                 serviceUrl: 'http://localhost:3000/intl-postcode-api/cities',
                 minChars: 1,
                 deferRequestBy: 250,
                 dataType: 'json',
                 paramName: 'city',
-                params: {country: $("#countrycode").val()},
+                params: {country: $("#countrycode").val(), limit: 100},
                 transformResult: function(response) {
                     return {
                         suggestions: $.map(response, function(item) {
-                            return { value: item.b + " " + item.d, data: item.b + " " + item.d };
+                            cityValue = item.b + " ";
+                            cityValue += (item.c == "") ? "" : "(" + item.c + ")";
+                            cityValue += item.d;
+                            return { value: cityValue, data: cityValue};
                         })
                     };
                 },
@@ -85,22 +90,25 @@
 
     <div class="container">
         <h1>International Postcode Lookup API</h1>
-        <p>Country:</p>
+        <h2>Country Lookup</h2>
         <div>
+            <p>Country:</p>
             <input type="text" name="country" id="country" />
+            <p>Country code:</p>
             <input type="text" name="countrycode" id="countrycode" readonly />
+            <p>Does this country use post codes?</p>
+            <input type="text" name="postcodeflag" id="postcodeflag" readonly />
         </div>
-        <h2>Postcode Lookup</h2>
-        <p>Postcode:</p>
-        <div>
-            <input type="text" name="postcode" id="postcode"/>
-        </div>
-        <h2>City Lookup</h2>
-        <p>City:</p>
-        <div>
+        <div id="wrapper-city">
+            <h2>City Lookup</h2>
+            <p>City:</p>
             <input type="text" name="city" id="city"/>
         </div>
-
+        <div id="wrapper-postcode">
+            <h2>Postcode Lookup</h2>
+            <p>Postcode:</p>
+            <input type="text" name="postcode" id="postcode"/>
+        </div>
     </div>
 
 </body>
