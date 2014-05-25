@@ -17,7 +17,6 @@ rest-service/target
 .project
 .settings/
 
-# exclude the full CSV files, only upload the zipped versions
-routing-reference-data/country.csv
-routing-reference-data/countrypc.csv
-routing-reference-data/ESDv6.csv
+# esclude intellij files
+rest-service/.idea/
+rest-service/intl-postcode-api.iml
