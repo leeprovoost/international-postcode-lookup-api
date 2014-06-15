@@ -26,7 +26,7 @@ public class IntlPostcodeDao {
 
     public IntlPostcodeDao(DB mongoDB) {
         final DBCollection dbESD = mongoDB.getCollection(COLLECTION_NAME_ESD);
-        dbESD.ensureIndex(new BasicDBObject("a", 1));
+        dbESD.ensureIndex(new BasicDBObject("cc", 1));
         final DBCollection dbCountry = mongoDB.getCollection(COLLECTION_NAME_country);
         final DBCollection dbCountryPc = mongoDB.getCollection(COLLECTION_NAME_countrypc);
         this.ESDCollection = JacksonDBCollection.wrap(dbESD, ESD.class, String.class);
@@ -73,7 +73,7 @@ public class IntlPostcodeDao {
      */
     public List<ESD> getESDListByCountryCode(String countryCode, int limit) {
     	
-    	DBObject query = QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get();
+    	DBObject query = QueryBuilder.start("cc").in(new String[] {countryCode.toUpperCase()}).get();
     	return ESDCollection.find(query).limit(limit).toArray();
     }
     /**
@@ -89,8 +89,8 @@ public class IntlPostcodeDao {
     	
     	Pattern pattern = Pattern.compile("^" + partialPostcode.toUpperCase());
     	DBObject query = QueryBuilder.start().and(
-					QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
-					QueryBuilder.start("d").regex(pattern).get()
+					QueryBuilder.start("cc").in(new String[] {countryCode.toUpperCase()}).get(),
+					QueryBuilder.start("pc").regex(pattern).get()
 				).get();
 
     	return ESDCollection.find(query).limit(limit).toArray();
@@ -106,8 +106,8 @@ public class IntlPostcodeDao {
     	    	
     	Pattern pattern = Pattern.compile("^" + partialCityName.toUpperCase());
     	DBObject query = QueryBuilder.start().and(
-    						QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
-    						QueryBuilder.start("b").regex(pattern).get()
+    						QueryBuilder.start("cc").in(new String[] {countryCode.toUpperCase()}).get(),
+    						QueryBuilder.start("cn").regex(pattern).get()
     					).get();
     	return ESDCollection.find(query).limit(limit).toArray();
     }
@@ -126,9 +126,9 @@ public class IntlPostcodeDao {
     	Pattern cityPattern = Pattern.compile("^" + partialCityName.toUpperCase());
     	Pattern postcodePattern = Pattern.compile("^" + partialPostCode.toUpperCase());
     	DBObject query = QueryBuilder.start().and(
-    						QueryBuilder.start("a").in(new String[] {countryCode.toUpperCase()}).get(),
-    						QueryBuilder.start("b").regex(cityPattern).get(),
-    						QueryBuilder.start("d").regex(postcodePattern).get()
+    						QueryBuilder.start("cc").in(new String[] {countryCode.toUpperCase()}).get(),
+    						QueryBuilder.start("cn").regex(cityPattern).get(),
+    						QueryBuilder.start("pc").regex(postcodePattern).get()
     					).get();
     	return ESDCollection.find(query).limit(limit).toArray();
     }

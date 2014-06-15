@@ -5,7 +5,7 @@
 	<groupId>com.leeprovoost</groupId>
 	<artifactId>intl-postcode-api</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>intl-postcode-api</name>
 	<description>International Postcode Lookup REST Service based on DHL data</description>
 
