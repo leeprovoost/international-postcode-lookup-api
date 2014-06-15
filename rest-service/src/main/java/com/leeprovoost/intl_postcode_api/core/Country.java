@@ -25,35 +25,35 @@ public class Country {
 	public void setId(String _id) {
 		this._id = _id;
 	}
-	@JsonProperty("a")
+	@JsonProperty("cc")
 	public String getCountryCode() {
 		return countryCode;
 	}
-	@JsonProperty("a")
+	@JsonProperty("cc")
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
-	@JsonProperty("b")
+	@JsonProperty("cn")
 	public String getCountryName() {
 		return countryName;
 	}
-	@JsonProperty("b")
+	@JsonProperty("cn")
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
-	@JsonProperty("c")
+	@JsonProperty("cu")
 	public String getCurrencyCode() {
 		return currencyCode;
 	}
-	@JsonProperty("c")
+	@JsonProperty("cu")
 	public void setCurrencyCode(String currencyCode) {
 		this.currencyCode = currencyCode;
 	}
-	@JsonProperty("d")
+	@JsonProperty("pf")
 	public Boolean getUsePostcodeFlag() {
 		return usePostcodeFlag;
 	}
-	@JsonProperty("d")
+	@JsonProperty("pf")
 	public void setUsePostcodeFlag(Boolean usePostcodeFlag) {
 		this.usePostcodeFlag = usePostcodeFlag;
 	}

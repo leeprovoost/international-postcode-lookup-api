@@ -24,27 +24,27 @@ public class CountryPostcode {
 	public void setId(String _id) {
 		this._id = _id;
 	}
-	@JsonProperty("a")
+	@JsonProperty("cc")
 	public String getCountryCode() {
 		return countryCode;
 	}
-	@JsonProperty("a")
+	@JsonProperty("cc")
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
-	@JsonProperty("b")
+	@JsonProperty("pf")
 	public String getPostcodeFormat() {
 		return postcodeFormat;
 	}
-	@JsonProperty("b")
+	@JsonProperty("pf")
 	public void setPostcodeFormat(String postcodeFormat) {
 		this.postcodeFormat = postcodeFormat;
 	}
-	@JsonProperty("c")
+	@JsonProperty("sd")
 	public Integer getSignificantDigits() {
 		return significantDigits;
 	}
-	@JsonProperty("c")
+	@JsonProperty("sd")
 	public void setSignificantDigits(Integer significantDigits) {
 		this.significantDigits = significantDigits;
 	}

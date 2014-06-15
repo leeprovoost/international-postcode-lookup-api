@@ -29,35 +29,35 @@ public class ESD {
 	public void setId(String _id) {
 		this._id = _id;
 	}
-	@JsonProperty("a")
+	@JsonProperty("cc")
 	public String getCountryCode() {
 		return countryCode;
 	}
-	@JsonProperty("a")
+	@JsonProperty("cc")
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
-	@JsonProperty("b")
+	@JsonProperty("cn")
 	public String getCityName() {
 		return cityName;
 	}
-	@JsonProperty("b")
+	@JsonProperty("cn")
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
-	@JsonProperty("c")
+	@JsonProperty("sn")
 	public String getSuburbName() {
 		return suburbName;
 	}
-	@JsonProperty("c")
+	@JsonProperty("sn")
 	public void setSuburbName(String suburbName) {
 		this.suburbName = suburbName;
 	}
-	@JsonProperty("d")
+	@JsonProperty("pc")
 	public String getPostcode() {
 		return postcode;
 	}
-	@JsonProperty("d")
+	@JsonProperty("pc")
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
